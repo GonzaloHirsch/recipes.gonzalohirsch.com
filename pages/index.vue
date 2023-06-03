@@ -1,24 +1,16 @@
 <template>
     <main id="main">
         <SectionsHero />
-        <SectionsAbout />
-        <SectionsBlogCta />
-        <SectionsExperience />
-        <SectionsPassion />
-        <SectionsProjects />
-        <SectionsContact />
-        <ClientOnly>
-            <SectionsFilms />
-        </ClientOnly>
+        <SectionsLatestRecipes />
     </main>
 </template>
 
 <script setup>
-const title = 'Gonzalo Hirsch | Software Engineer and Freelancer';
+const title = "Gonzalo's Recipes";
 const description =
-    "I'm an Argentina-based Software Engineer (BS, MEng), AWS Certified Solutions Architect Associate and Full-Stack Engineer focused on developing clean, user-friendly, and fast experiences.";
-const image = '/meta-img.jpg';
-const url = 'https://gonzalohirsch.com';
+    "Explore Gonzalo's Recipes, a delightful collection of simple and quick dishes that focus on high-quality ingredients and easy-to-follow instructions. Discover mouthwatering recipes that will impress your family and friends with their delicious flavors.";
+const image = '/meta-img.webp';
+const url = 'https://recipes.gonzalohirsch.com';
 
 // Get the authors
 const { data: authorData } = await useAsyncData('home', () => queryContent('/authors').findOne());
@@ -44,7 +36,8 @@ useHead({
         {
             hid: 'keywords',
             name: 'keywords',
-            content: 'Development, Developer, Software, Engineer, Software Engineer, Engineering, Full-Stack, Freelancer, Experiences, AWS, Solutions Architect Associate, SAA-C03'
+            content:
+                'Development, Developer, Software, Engineer, Software Engineer, Engineering, Full-Stack, Freelancer, Experiences, AWS, Solutions Architect Associate, SAA-C03'
         },
         {
             hid: 'author',
@@ -60,7 +53,7 @@ useHead({
         { hid: 'og:image:type', property: 'og:image:type', content: 'image/jpeg' },
         { hid: 'og:image:width', property: 'og:image:width', content: '800' },
         { hid: 'og:image:height', property: 'og:image:height', content: '418' },
-        { hid: 'og:image:alt', property: 'og:image:alt', content: 'Gonzalo Hirsch' },
+        { hid: 'og:image:alt', property: 'og:image:alt', content: "Gonzalo's Recipes" },
 
         // Twitter card
         { hid: 'twitter:card', name: 'twitter:card', content: 'Summary' },
@@ -68,7 +61,7 @@ useHead({
         { hid: 'twitter:url', name: 'twitter:url', content: url },
         { hid: 'twitter:description', name: 'twitter:description', content: description },
         { hid: 'twitter:image', name: 'twitter:image', content: url + image },
-        { hid: 'twitter:image:alt', name: 'twitter:image:alt', content: 'Gonzalo Hirsch' }
+        { hid: 'twitter:image:alt', name: 'twitter:image:alt', content: "Gonzalo's Recipes" }
     ],
     link: [
         {

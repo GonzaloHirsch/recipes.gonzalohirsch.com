@@ -1,4 +1,4 @@
 User-Agent: *
 Allow: /
 
-Sitemap: https://gonzalohirsch.com/sitemap.xml
+Sitemap: https://recipes.gonzalohirsch.com/sitemap.xml

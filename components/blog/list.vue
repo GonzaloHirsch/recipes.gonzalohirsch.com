@@ -3,9 +3,9 @@
         <li
             v-for="article in data"
             :key="article._path"
-            class="col-span-full md:col-span-5 relative rounded-md border-2 border-typography_primary_light dark:border-typography_primary_dark hover:border-brand_primary_light hover:dark:border-brand_primary_dark group"
+            class="col-span-full md:col-span-5 relative rounded-md border-2 border-typography_primary_light dark:border-typography_primary_dark hover:border-brand_primary_light hover:dark:border-brand_primary_dark group p-4"
         >
-            <NuxtLink :to="article._path + '/'" class="p-4 block relative">
+            <NuxtLink :to="article._path + '/'" class="block relative">
                 <div class="wrapper">
                     <header>
                         <h2
@@ -17,15 +17,22 @@
                             {{ $formatDate(article.date) }}
                         </p>
                         <p>{{ article.excerpt }}</p>
-                        <!-- <ul class="article-tags">
-                                            <li class="tag !py-0.5" v-for="(tag, n) in article.tags" :key="n">{{ tag }}</li>
-                                        </ul> -->
+                        <ul class="flex flex-row flex-wrap">
+                            <li
+                                class="mr-2 px-1 py-1 mt-2 rounded-md bg-typography_primary_light text-background_light group-hover:bg-brand_primary_light text-sm leading-sm"
+                                v-for="(tag, n) in article.tags"
+                                :key="n"
+                            >
+                                {{ tag }}
+                            </li>
+                        </ul>
                     </header>
                 </div>
             </NuxtLink>
+            <!-- <a :href="article._path + '/#disqus_thread'" class="mt-4 block text-sm leading-sm text-typography_primary_light dark:text-typography_primary_dark"/> -->
         </li>
     </ul>
-    <p v-if="data.length == 0" class="w-full md:w-7/12 text-h3 leading-h3 font-bold dark:text-white">{{message}}</p>
+    <p v-if="data.length == 0" class="w-full md:w-7/12 text-h3 leading-h3 font-bold dark:text-white">{{ message }}</p>
 </template>
 
 <script setup>
@@ -36,8 +43,35 @@ const props = defineProps({
     },
     message: {
         type: String,
-        default: "There are no posts right now, but stay tuned for newer releases in the future."
+        default: 'There are no posts right now, but stay tuned for newer releases in the future.'
+    },
+    name: {
+        type: String,
+        default: 'Best "Gonzalo\'s Recipes" recipes'
     }
 });
+
 const { $formatDate } = useNuxtApp();
+
+if (props.data != null && props.data.length > 0) {
+    useHead({
+        script: [
+            {
+                type: 'application/ld+json',
+                children: JSON.stringify({
+                    '@context': 'https://schema.org',
+                    '@type': 'ItemList',
+                    name: props.name,
+                    itemListElement: props.data.map((item, index) => {
+                        return {
+                            '@type': 'ListItem',
+                            position: index + 1,
+                            url: `https://recipes.gonzalohirsch.com${item._path}/`
+                        };
+                    })
+                })
+            }
+        ]
+    });
+}
 </script>

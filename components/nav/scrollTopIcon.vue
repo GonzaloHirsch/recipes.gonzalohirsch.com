@@ -1,7 +1,7 @@
 <template>
     <div
         :class="[
-            'fixed flex flex-col items-center w-12 sm:w-section_x z-20 bottom-[50px] right-0 text-typography_primary_dark dark:text-typography_primary_light bg-brand_primary_light/90 dark:bg-brand_primary_dark/90 transform duration-150 rounded-tl-md rounded-bl-md',
+            'fixed flex flex-col items-center w-12 sm:w-section_x z-20 bottom-[50px] right-0 text-typography_primary_dark bg-brand_primary_light/90 transform duration-150 rounded-tl-md rounded-bl-md',
             isVisible ? '' : 'translate-x-full'
         ]"
     >

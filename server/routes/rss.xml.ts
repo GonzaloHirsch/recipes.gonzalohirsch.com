@@ -6,19 +6,19 @@ const authors = {
     "Gonzalo Hirsch": {
         email: "hirschgonzalo@gmail.com",
         name: "Gonzalo Hirsch",
-        link: "https://gonzalohirsch.com"
+        link: "https://recipes.gonzalohirsch.com"
     }
 }
 
 // https://journal.maciejpedzi.ch/generating-rss-feeds-for-a-nuxt-content-site
 export default defineEventHandler(async (event) => {
     // Feed setup
-    const blogUrl = 'https://gonzalohirsch.com';
+    const blogUrl = 'https://recipes.gonzalohirsch.com';
     const feed = new Feed({
         id: blogUrl,
-        title: "Gonzalo Hirsch's Blog",
+        title: "Gonzalo's Recipes",
         description:
-            'A personal blog where Gonzalo Hirsch writes about programming and insights he gains on software engineering and different technologies from the industry.',
+            "Discover the joy of cooking with Gonzalo's Recipes, a delightful collection of simple, quick, and delicious dishes that skip the fluff and focus on high-quality ingredients, easy-to-follow instructions, and a passion for creating mouthwatering meals that will impress your family and friends.",
         link: blogUrl,
         copyright: `All rights reserved ${new Date().getFullYear()}, Gonzalo Hirsch`,
         generator: "awesome",
@@ -26,7 +26,7 @@ export default defineEventHandler(async (event) => {
     });
     // Recovering the docs and filtering for only blogs
     let docs = await serverQueryContent(event).find();
-    docs = docs.filter((doc) => minimatch(doc._path, '/blog/**'));
+    docs = docs.filter((doc) => minimatch(doc._path, '/recipes/**'));
     // Modifying them to fit the HAST tree
     for (const doc of docs) {
         const recursivelyPatchChildren = (node) => {

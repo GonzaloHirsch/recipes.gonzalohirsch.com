@@ -1,6 +1,6 @@
 # Personal Website
 
-URL for this site is [gonzalohirsch.com](https://gonzalohirsch.com).
+URL for this site is [recipes.gonzalohirsch.com](https://recipes.gonzalohirsch.com).
 
 ## Setup
 

@@ -12,6 +12,12 @@
                         {{ other.headline }}
                     </NuxtLink>
                     <p class="!no-underline md:hidden text-sm leading-sm md:text-xs md:leading-xs mt-1">{{ other.excerpt }}</p>
+                    <p class="!no-underline md:hidden text-sm leading-sm md:text-xs md:leading-xs mt-1 text-typography_primary_light/60">
+                        <template v-for="(tag, index) in other.tags" :key="`tag-${index}`">
+                            <em>{{ tag }}</em>
+                            <span v-if="index < other.tags.length - 1" class="mx-2">/</span>
+                        </template>
+                    </p>
                 </li>
             </template>
         </ul>

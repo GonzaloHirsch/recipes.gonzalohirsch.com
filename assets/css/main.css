@@ -46,7 +46,7 @@ h5 {
     @apply font-highlight text-h5_sm leading-h5_sm mb-1;
 }
 
-.blog-content > :first-child {
+.blog-content:not(.second-content) > :first-child {
     @apply mt-0;
 }
 
@@ -103,9 +103,6 @@ h5 {
     height: 2px;
     top: -50px;
 }
-.dark .title-decor::before {
-    @apply bg-typography_primary_dark;
-}
 
 /* Body Text */
 
@@ -125,10 +122,6 @@ p {
     @apply text-brand_primary_light font-bold;
 }
 
-.dark .section-title {
-    @apply text-brand_primary_dark;
-}
-
 /* Menu & Body */
 
 body.menu-open {
@@ -143,10 +136,6 @@ body.menu-open {
 
 body {
     @apply bg-background_light;
-}
-
-.dark body {
-    @apply bg-background_dark;
 }
 
 /* Blog Breadcrumbs */
@@ -167,14 +156,6 @@ body {
     @apply text-brand_primary_light;
 }
 
-.dark .blog-breadcrumb > li a {
-    @apply text-brand_primary_dark;
-}
-
-.blog-breadcrumb > li a:hover {
-    @apply underline;
-}
-
 /* Blog Aside */
 
 .blog-aside-title {
@@ -189,6 +170,10 @@ body {
     @apply text-lg leading-h5;
 }
 
+.blog-content:not(.second-content) > p > figure {
+    @apply mt-0;
+}
+
 /* Blog Links */
 
 .blog-content :not(h1):not(h2):not(h3):not(h4):not(h5) a {
@@ -199,10 +184,6 @@ body {
     @apply text-brand_primary_light;
 }
 
-.dark .blog-content :not(h1):not(h2):not(h3):not(h4):not(h5) a:hover {
-    @apply text-brand_primary_dark;
-}
-
 /* Blog Headings */
 
 .blog-content h2:hover ::after,
@@ -210,14 +191,6 @@ body {
 .blog-content h4:hover ::after,
 .blog-content h5:hover ::after {
     @apply ml-2 opacity-40 text-brand_secondary_light absolute;
-    content: '#';
-}
-
-.dark .blog-content h2:hover ::after,
-.dark .blog-content h3:hover ::after,
-.dark .blog-content h4:hover ::after,
-.dark .blog-content h5:hover ::after {
-    @apply text-brand_secondary_dark;
     content: '#';
 }
 

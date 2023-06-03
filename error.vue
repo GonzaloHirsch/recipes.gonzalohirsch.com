@@ -5,11 +5,11 @@
 </template>
 
 <script setup>
-const title = 'Error Page | Gonzalo Hirsch';
+const title = "Error Page | Gonzalo's Recipes";
 const description =
     "Congrats on finding the error page; you sure did look for it, and now you are sharing it with the world. I suggest you go to the homepage where you can find better stuff.";
-const image = 'meta-img.jpg';
-const url = 'https://gonzalohirsch.com/';
+const image = 'meta-img.webp';
+const url = 'https://recipes.gonzalohirsch.com/';
 
 useHead({
     meta: [

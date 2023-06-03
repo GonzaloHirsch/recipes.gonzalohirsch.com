@@ -36,7 +36,7 @@ const props = defineProps({
     }
 });
 
-const baseUrl = 'https://gonzalohirsch.com';
+const baseUrl = 'https://recipes.gonzalohirsch.com';
 const encodedUrl = encodeURIComponent(baseUrl + props.path);
 
 const icons = [
@@ -53,7 +53,7 @@ const icons = [
         icon: Twitter,
         alt: 'Share this story on Twitter.',
         getHref: () => {
-            return `https://twitter.com/intent/tweet?text=${encodeURIComponent('Check out this article about ' + props.headline)}&url=${encodedUrl}`;
+            return `https://twitter.com/intent/tweet?text=${encodeURIComponent('Check out this recipe: ' + props.headline)}&url=${encodedUrl}`;
         }
     },
     {

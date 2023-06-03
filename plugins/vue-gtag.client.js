@@ -5,9 +5,9 @@ export default defineNuxtPlugin((nuxtApp) => {
     const getGDPR = localStorage.getItem('GDPR:accepted');
     nuxtApp.vueApp.use(VueGtag, {
         property: {
-            id: 'G-0Q684KK541'
+            id: 'G-GB4SG361HD'
         },
-        appName: 'gonzalohirsch.com',
+        appName: 'recipes.gonzalohirsch.com',
         enabled: getGDPR === 'true',
         pageTrackerScreenviewEnabled: true
     }, nuxtApp.vueApp.router);

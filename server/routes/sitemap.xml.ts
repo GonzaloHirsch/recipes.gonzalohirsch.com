@@ -4,13 +4,13 @@ import replace from 'buffer-replace';
 import minimatch from 'minimatch';
 
 // Exclusion patterns
-const exclude = ['/experience**', '/authors**', '/featured-projects/**', '/projects/**'];
+const exclude = ['/authors**'];
 // URLs to include
-const include = ['https://gonzalohirsch.com', '/Gonzalo_Hirsch-Software_Engineer-CV.pdf', '/blog/'];
+const include = ['https://recipes.gonzalohirsch.com', '/recipes/', '/search/'];
 // Adding blog pages
 const blogPageCount = 2;
 for (let i = 1; i <= blogPageCount; i++) {
-    include.push(`/blog/page/${i}/`);
+    include.push(`/recipes/page/${i}/`);
 }
 // Datemod
 const datemod = new Date().toISOString().split('T')[0];
@@ -19,7 +19,7 @@ export default defineEventHandler(async (event) => {
     // Fetch all documents
     const docs = await serverQueryContent(event).find();
     const sitemap = new SitemapStream({
-        hostname: 'https://gonzalohirsch.com',
+        hostname: 'https://recipes.gonzalohirsch.com',
         lastmodDateOnly: true
     });
 
@@ -38,7 +38,7 @@ export default defineEventHandler(async (event) => {
         if (!excludeFromList) {
             sitemap.write({
                 url: (doc._path + '/').replace(/\/+$/, '/'),
-                changefreq: 'weekly',
+                changefreq: 'daily',
                 lastmod: datemod,
                 priority: 1
             });
@@ -56,7 +56,7 @@ export default defineEventHandler(async (event) => {
         if (!inclusionMap[url]) {
             sitemap.write({
                 url: url,
-                changefreq: 'weekly',
+                changefreq: 'daily',
                 lastmod: datemod,
                 priority: 1
             });
@@ -66,6 +66,6 @@ export default defineEventHandler(async (event) => {
     sitemap.end();
 
     return streamToPromise(sitemap).then((buffer) =>
-        replace(buffer, '<loc>https://gonzalohirsch.com/</loc>', '<loc>https://gonzalohirsch.com</loc>')
+        replace(buffer, '<loc>https://recipes.gonzalohirsch.com/</loc>', '<loc>https://recipes.gonzalohirsch.com</loc>')
     );
 });

@@ -1,11 +1,11 @@
-const keywords = 'Development, Developer, Software, Engineer, Software Engineer, Engineering, Full-Stack, Freelancer, Experiences, BS, MEng';
+const keywords = 'Simple recipes, Flavorful dishes, Easy cooking, Delicious meals, Quick and easy recipes, Healthy cooking, Fresh ingredients, Tasty recipes, Nutritious meals, Easy-to-follow instructions, Mouthwatering flavors, Time-saving recipes, Cooking tips, Recipe ideas, Kitchen inspiration';
 const description =
-"I'm an Argentina-based Software Engineer (BS, MEng), AWS Certified Solutions Architect Associate and Full-Stack Engineer focused on developing clean, user-friendly, and fast experiences.";
+    "Explore Gonzalo's Recipes, a delightful collection of simple and quick dishes that focus on high-quality ingredients and easy-to-follow instructions. Discover mouthwatering recipes that will impress your family and friends with their delicious flavors.";
 const website = {
     '@context': 'http://schema.org',
     '@type': 'WebSite',
-    name: 'Gonzalo Hirsch | Software Engineer and Freelancer',
-    url: 'https://gonzalohirsch.com/'
+    name: "Gonzalo's Recipes",
+    url: 'https://recipes.gonzalohirsch.com/'
 };
 const person = {
     '@context': 'http://www.schema.org',
@@ -36,8 +36,8 @@ const person = {
             ]
         }
     ],
-    url: 'https://gonzalohirsch.com/',
-    image: 'https://gonzalohirsch.com/meta-img.jpg',
+    url: 'https://recipes.gonzalohirsch.com/',
+    image: 'https://recipes.gonzalohirsch.com/meta-img.webp',
     sameAs: [
         'https://gonzalohirsch.com/',
         'https://github.com/GonzaloHirsch',
@@ -49,10 +49,10 @@ const person = {
 const logos = {
     '@context': 'http://www.schema.org',
     '@type': 'Organization',
-    url: 'https://gonzalohirsch.com/',
-    logo: 'https://gonzalohirsch.com/logo.webp',
+    url: 'https://recipes.gonzalohirsch.com/',
+    logo: 'https://recipes.gonzalohirsch.com/logo.webp',
     email: 'hirschgonzalo@gmail.com',
-    name: 'Gonzalo Hirsch | Software Engineer and Freelancer',
+    name: "Gonzalo's Recipes",
     description: description,
     founder: person,
     keywords: keywords
@@ -63,7 +63,7 @@ const jsonLds = [website, person, logos];
 const blogPageCount = 2;
 const routes: String[] = ['/'];
 for (let i = 1; i <= blogPageCount; i++) {
-    routes.push(`/blog/page/${i}/` as string);
+    routes.push(`/recipes/page/${i}/` as string);
 }
 
 export default defineNuxtConfig({
@@ -93,7 +93,7 @@ export default defineNuxtConfig({
             htmlAttrs: {
                 lang: 'en'
             },
-            title: 'Gonzalo Hirsch | Software Engineer and Freelancer',
+            title: "Gonzalo's Recipes",
             meta: [
                 { charset: 'utf-8' },
                 { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -109,12 +109,14 @@ export default defineNuxtConfig({
                 }
             ],
             link: [{ rel: 'icon', type: 'image/png', href: '/favicon.png' }],
-            script: jsonLds.map((elem) => {
-                return {
-                    type: 'application/ld+json',
-                    children: JSON.stringify(elem)
-                };
-            })
+            script: [
+                ...jsonLds.map((elem) => {
+                    return {
+                        type: 'application/ld+json',
+                        children: JSON.stringify(elem)
+                    };
+                })
+            ]
         }
     },
     // tailwindcss: {
@@ -124,11 +126,6 @@ export default defineNuxtConfig({
     sourcemap: false,
     // Inspired on https://blog.openreplay.com/power-your-blog-with-nuxt-content
     content: {
-        // https://content.nuxtjs.org/api/configuration
-        highlight: {
-            theme: 'github-dark',
-            preload: ['java','javascript','python','html']
-        },
         markdown: {
             // https://github.com/rehypejs/rehype-external-links
             rehypePlugins: [
