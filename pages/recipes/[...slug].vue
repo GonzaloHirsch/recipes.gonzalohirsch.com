@@ -36,7 +36,7 @@
                         {{ doc.headline }}
                     </h1>
                     <p class="blog-post-text mb-2 md:w-8/12 md:text-lg md:leading-lg text-center md:text-left">{{ doc.excerpt }}</p>
-                    <ul class="list-none flex flex-row mb-8">
+                    <ul class="list-none flex flex-row mb-8 items-center justify-center md:items-start md:justify-start">
                         <li v-for="(tag, index) in doc.tags" :key="`tag-hero-${index}`" class="bg-typography_primary_light text-background_light mr-2 px-1 py-0 rounded">{{ tag }}</li>
                     </ul>
                     <div
