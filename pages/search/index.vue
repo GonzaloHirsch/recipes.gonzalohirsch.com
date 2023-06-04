@@ -6,13 +6,15 @@
             description="Discover the joy of cooking with Gonzalo's Recipes, a delightful collection of simple, quick, and delicious dishes. Skip the fluff and explore a variety of recipes that feature high-quality ingredients, easy-to-follow instructions, and a passion for creating mouthwatering meals. Search among our diverse selection and impress your family and friends with culinary delights that will leave them wanting more."
             class="pb-5 md:pb-6"
         />
-        <Section id="main" class="!pt-0">
+        <Section class="!pt-0 !pb-0 sticky md:relative top-nav md:top-0 z-10 bg-background_light md:bg-transparent">
             <input
                 type="text"
                 placeholder="Search for a recipe name or tag..."
                 v-model="filter"
-                class="w-full border-2 rounded-md my-4 px-4 py-2 border-typography_primary_light active:border-brand_primary_light focus:border-brand_primary_light focus-visible:border-brand_primary_light ring-0 ring-offset-0 outline-none"
+                class="w-full border-2 rounded-md px-4 py-2 bg-background_light bg-opacity-[98%] border-typography_primary_light active:border-brand_primary_light focus:border-brand_primary_light focus-visible:border-brand_primary_light ring-0 ring-offset-0 outline-none"
             />
+        </Section>
+        <Section id="main" class="!pt-4">
             <ContentQuery
                 path="/recipes"
                 :only="['headline', 'excerpt', 'date', 'tags', '_path', 'image']"
