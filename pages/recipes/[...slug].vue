@@ -59,7 +59,7 @@
                 <Section id="main" class="!pt-0 relative grid grid-cols-10 gap-8 lg:gap-12">
                     <aside class="col-span-full md:col-span-3 md:hidden">
                         <div class="blog-post-text blog-aside-wrapper mb-2">
-                            <BlogTableOfContents :links="doc.body?.toc?.links" />
+                            <BlogTableOfContents :links="getTocLinks(doc.body?.toc?.links)" />
                         </div>
                     </aside>
                     <article class="prose col-span-full md:col-span-7 relative">
